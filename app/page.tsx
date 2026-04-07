@@ -1,10 +1,9 @@
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center font-sans">
-      <div className="text-center">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">My First App</h1>
-        <p className="text-gray-500">Ready to build something.</p>
-      </div>
-    </div>
-  )
+import { getChanges } from '@/lib/data/changes'
+import BoardClient from './board-client'
+
+export const dynamic = 'force-dynamic'
+
+export default async function BoardPage() {
+  const changes = await getChanges()
+  return <BoardClient initialChanges={changes} />
 }
